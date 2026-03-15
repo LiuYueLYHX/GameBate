@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Meu Jogo</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
 
-<canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div id="ui-overlay">
+        <div class="health-container">
+            <div id="playerHealth" class="health-bar" style="width: 100%;"></div>
+        </div>
+        <div class="stamina-container">
+            <div id="playerStamina" class="stamina-bar" style="width: 100%;"></div>
+            <div class="stamina-segments">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="score-container">Score: <span id="gameScore">0</span></div>
+        <div class="controls-hint">A/D: Move | K/Space: Jump | J: Attack | L: Dash | U: Magic | S: Block</div>
+        
+        <!-- Skill Cooldowns (Bottom Left/Top Right - positioning handled in CSS) -->
+        <div id="skills-container">
+            <div class="skill-item" id="skill-dash">
+                <div class="skill-icon">L</div>
+                <div class="skill-cd-overlay"></div>
+            </div>
+            <div class="skill-item" id="skill-u">
+                <div class="skill-icon">U</div>
+                <div class="skill-cd-overlay"></div>
+            </div>
+            <div class="skill-item" id="skill-s">
+                <div class="skill-icon">S</div>
+                <div class="skill-cd-overlay"></div>
+            </div>
+            <div class="skill-item" id="skill-firelance">
+                <div class="skill-icon">S+U</div>
+                <div class="skill-cd-overlay"></div>
+            </div>
+            <div class="skill-item" id="skill-flame">
+                <div class="skill-icon">W+J</div>
+                <div class="skill-cd-overlay"></div>
+                <div class="skill-active-glow fire"></div>
+            </div>
+            <div class="skill-item" id="skill-lightning">
+                <div class="skill-icon">W+U</div>
+                <div class="skill-cd-overlay"></div>
+                <div class="skill-active-glow lightning"></div>
+            </div>
+        </div>
+    </div>
 
-<script src="main.js"></script>
+    <!-- Boss Health Bar - top center, hidden until boss spawns -->
+    <div id="boss-ui" class="hidden">
+        <div class="boss-label">⚔ BOSS ⚔</div>
+        <div class="boss-health-container">
+            <div id="bossHealth" class="boss-health-bar" style="width: 100%;"></div>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <script src="main.js"></script>
 
 </body>
+
 </html>
